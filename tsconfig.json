@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+	"outDir": "./js",
+	"target": "es5",
+	"jsx": "react",
+	"allowJs": true,
+	"noImplicitAny": true,
+	"sourceMap": true
+    }
+}

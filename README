@@ -1,0 +1,11 @@
+Open Door via email - nodejs orchestration server.
+
+Workflow:
+
+1. Visitor rings my doorbell, which triggers an ESP8266 running https://gist.github.com/talyian/58b93d15451dcb418808213faa7e5a35
+2. The 8266 requests <server>/door, which blocks and waits for step 4
+3. We send an email with a one-time-use token /open/SECRETTOKENHERE.
+4. Two things could occur:
+   A) The link is clicked within 5 minutes, and we return a "open" command to the 8266, which sends a signal to open the door as if we were pressing the buzzer from within the room.
+   B) A timeout occurs after 5 minutes, and we return 'timeout'. The token is invalidated. If any /open/ link is clicked with a stale token, the client is informed that they were too slow.
+5. The 8266 goes back to the waiting state.
